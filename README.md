@@ -76,10 +76,10 @@ In some other component which sits below the state/dispatch providing component:
 ```
 import React, { useContext } from 'react';
 
-import { Context } from 'src/context.js';
+import { useAppContext } from 'src/hooks.js';
 
 export default () => {
-  const { state, dispatch } = Context;
+  const { state, dispatch } = useAppContext();
 
   const { myWidgets, myOtherWidgets } = state;
 
