@@ -17,10 +17,10 @@ import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
     myWidgets: useReducer(todoReducer, initialTodos),
-    myOtherStuff: useReducer(stuffReducer, initialStuff),
+    myOtherWidgets: useReducer(stuffReducer, initialStuff),
   });
 
-  const { myWidgets, myOtherStuff } = state;
+  const { myWidgets, myOtherWidgets } = state;
 
   ...
 }
@@ -48,7 +48,7 @@ import { StateContext, DispatchContext } from './somefile.js';
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
     myWidgets: useReducer(todoReducer, initialTodos),
-    myOtherStuff: useReducer(stuffReducer, initialStuff),
+    myOtherWidgets: useReducer(stuffReducer, initialStuff),
   });
 
   return (
@@ -74,7 +74,7 @@ export default () => {
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
 
-  const { myWidgets, myOtherStuff } = state;
+  const { myWidgets, myOtherWidgets } = state;
 
   return (
     <div>
