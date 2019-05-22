@@ -1,7 +1,8 @@
 {
-  "name": "hook-use-combined-reducers",
+  "name": "@nickcoleman/use-combined-reducers",
   "version": "1.0.0",
   "description": "hook alternative to redux combineReducers()",
+  "private": false,
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack --config ./webpack.config.js --mode=production",

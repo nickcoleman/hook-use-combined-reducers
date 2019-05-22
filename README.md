@@ -4,7 +4,7 @@ Custom hook to combine all useReducer hooks for one global state container with 
 
 ## Installation
 
-`npm install use-combined-reducers-hook`
+`npm install @nickcoleman/use-combined-reducers`
 
 ## Usage
 
@@ -12,7 +12,7 @@ Create a global dispatch function and state object by initializing multiple `use
 
 ```
 import React from 'react';
-import useCombinedReducers from 'use-combined-reducers';
+import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
@@ -41,7 +41,7 @@ In your top-level React component (or any other component above a component tree
 
 ```
 import React from 'react';
-import useCombinedReducers from 'use-combined-reducers';
+import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
 import { StateContext, DispatchContext } from './somefile.js';
 
@@ -90,4 +90,3 @@ export default () => {
 - `cd use-combined-reducers`
 - `npm install`
 - `npm run test`
-# hook-use-combined-reducers
