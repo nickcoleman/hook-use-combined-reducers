@@ -79,7 +79,7 @@ import React, { useContext } from 'react';
 import { Context } from 'src/context.js';
 
 export default () => {
-  const {state, dispatch } = Context;
+  const { state, dispatch } = Context;
 
   const { myWidgets, myOtherWidgets } = state;
 
