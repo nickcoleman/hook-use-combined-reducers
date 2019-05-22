@@ -1,0 +1,41 @@
+{
+  "name": "hook-use-combined-reducers",
+  "version": "1.0.0",
+  "description": "hook alternative to redux combineReducers()",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "webpack --config ./webpack.config.js --mode=production",
+    "prepare": "npm run build",
+    "test": "nyc mocha --require @babel/register 'src/**/**spec.js'",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "keywords": [],
+  "author": "Nick Coleman <nick@nickcoleman.io",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickcoleman/hook-use-combined-reducers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nickcoleman/hook-use-combined-reducers/issues"
+  },
+  "homepage": "https://github.com/nickcoleman/hook-use-combined-reducers#readme",
+  "dependencies": {
+    "sinon": "^7.3.2"
+  }
+}
