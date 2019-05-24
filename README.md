@@ -1,6 +1,6 @@
 # useCombinedReducers React Hook
 
-Custom hook to combine all useReducer hooks for one global state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
+Custom hook to combine all useReducer hooks into a one global state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Custom hook to combine all useReducer hooks for one global state container with 
 
 ## Usage
 
-Create a global dispatch function and state object by initializing multiple `useReducer` hooks in `useCombinedReducers`:
+Create a single state object and a global dispatch function by combining multiple `useReducer` hooks within a `useCombinedReducers`:
 
 ```
 import React, { useReducer } from 'react';
