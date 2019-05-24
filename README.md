@@ -16,8 +16,8 @@ import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
-    myWidgets: useReducer(todoReducer, initialTodos),
-    myOtherWidgets: useReducer(stuffReducer, initialStuff),
+    myWidgets: useReducer(widgetsReducer, initialWidgets),
+    myThngs: useReducer(thingsReducer, initialThings),
   });
 
   const { myWidgets, myOtherWidgets } = state;
@@ -28,7 +28,7 @@ const App = () => {
 export default App;
 ```
 
-You can pass state and dispatch function down via props or [React's Context API](https://reactjs.org/docs/context.html). Passing it down via props is straight forward. Passing it down with context is demonstrated below.
+You can pass state and dispatch function down via props or [React's Context API](https://reactjs.org/docs/context.html). Passing it down with context is demonstrated below.
 
 In `src/context.js`
 
@@ -57,8 +57,8 @@ import { Context } from 'src/context';
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
-    myWidgets: useReducer(todoReducer, initialTodos),
-    myOtherWidgets: useReducer(stuffReducer, initialStuff),
+    myWidgets: useReducer(widgetsReducer, initialWidgets),
+    myThings: useReducer(thingsReducer, initialThings),
   });
 
   return (
@@ -71,7 +71,7 @@ const App = () => {
 export default App;
 ```
 
-In some other component which sits below the state/dispatch providing component:
+In a component which sits below the state/dispatch providing component:
 
 ```
 import React, { useContext } from 'react';
@@ -81,7 +81,7 @@ import { useAppContext } from 'src/hooks.js';
 export default () => {
   const { state, dispatch } = useAppContext();
 
-  const { myWidgets, myOtherWidgets } = state;
+  const { myWidgets, myThings } = state;
 
   return (
     <div>
