@@ -8,7 +8,7 @@ Custom hook to combine all useReducer hooks into a one global state container wi
 
 ## Usage
 
-Create a single state object and a global dispatch function by combining multiple `useReducer` hooks within a `useCombinedReducers`:
+Use `useCombinedReducers()` to combine multiple useReducers to create a single `state` object and a global `dispatch` function.
 
 ```
 import React, { useReducer } from 'react';
@@ -28,7 +28,7 @@ const App = () => {
 export default App;
 ```
 
-You can pass state and dispatch function down via props or [React's Context API](https://reactjs.org/docs/context.html). Passing it down with context is demonstrated below.
+Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html) or props. Passing it down with context is demonstrated below. You can also pass them down via `props`.
 
 In `src/context.js`
 
@@ -54,6 +54,7 @@ import React, { useReducer } from 'react';
 import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
 import { Context } from 'src/context';
+import SomeComponent from 'src/components/SomeComponent'
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
@@ -77,18 +78,31 @@ In a component which sits below the state/dispatch providing component:
 import React, { useContext } from 'react';
 
 import { useAppContext } from 'src/hooks.js';
+import * as actions from 'src/actions'
+import * as operations from 'src/operations' // if using reducks patern with hooks
 
-export default () => {
+function SomeComponent() {
   const { state, dispatch } = useAppContext();
 
   const { myWidgets, myThings } = state;
 
+  const addWidget = widget => {
+    dispatch(action.addWidget(widget))
+  }
+
+  // example if using a [reducks](https://github.com/alexnm/re-ducks) pattern with hooks
+  const addThing = thing => {
+    operations.addThink({ thing, dispatch })
+  }
+
   return (
     <div>
-      ...
+      ....
     </div>
   );
 };
+
+export default SomComponent
 ```
 
 ## Contribute
