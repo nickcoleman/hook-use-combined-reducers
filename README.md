@@ -72,7 +72,7 @@ const App = () => {
 export default App;
 ```
 
-In a component which sits below the state/dispatch providing component:
+In a component which sits below the state/dispatch providing component. And example of passing `dispatch` is also shown if using a hooks/context version of the [reducks](https://github.com/alexnm/re-ducks) pattern.
 
 ```
 import React, { useContext } from 'react';
@@ -90,7 +90,7 @@ function SomeComponent() {
     dispatch(action.addWidget(widget))
   }
 
-  // example if using a [reducks](https://github.com/alexnm/re-ducks) pattern with hooks
+  // example if using a reducks pattern
   const addThing = thing => {
     operations.addThink({ thing, dispatch })
   }
