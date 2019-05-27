@@ -17,7 +17,7 @@ import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
     myWidgets: useReducer(widgetsReducer, initialWidgets),
-    myThngs: useReducer(thingsReducer, initialThings),
+    myThings: useReducer(thingsReducer, initialThings),
   });
 
   const { myWidgets, myOtherWidgets } = state;
@@ -28,7 +28,7 @@ const App = () => {
 export default App;
 ```
 
-Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html) or props. Passing it down with context is demonstrated below. You can also pass them down via `props`.
+Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html). (An example is shown below -- but, same as if you'd generated state and dispatch from a single useReducer). You could also pass state and dispatch down via props.
 
 In `src/context.js`
 
@@ -47,7 +47,7 @@ import Context from "src/context"
 export const useAppContext = () => useContext(Context)
 ```
 
-In your top-level React component (or any other component above a component tree which needs managed state):
+In your top-level React component (or any other component above a component tree which needs to access the managed state):
 
 ```
 import React, { useReducer } from 'react';
@@ -72,7 +72,7 @@ const App = () => {
 export default App;
 ```
 
-In a component which sits below the state/dispatch providing component. And example of passing `dispatch` is also shown if using a hooks/context version of the [reducks](https://github.com/alexnm/re-ducks) pattern.
+In a child component which sits below the state/dispatch providing component. And and example of passing `dispatch` is also shown if using a hooks/context version of the [reducks](https://github.com/alexnm/re-ducks) pattern ( in the operations file: `const someOperation = ({state, dispatch})) => { dispatch(someAction(state))}` -- this stumped me for awhile).
 
 ```
 import React, { useContext } from 'react';
