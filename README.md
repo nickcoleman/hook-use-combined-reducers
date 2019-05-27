@@ -72,7 +72,7 @@ const App = () => {
 export default App;
 ```
 
-In a child component which sits below the state/dispatch providing component. And and example of passing `dispatch` is also shown if using a hooks/context version of the [reducks](https://github.com/alexnm/re-ducks) pattern ( in the operations file: `const addThing = ({thing, dispatch})) => { dispatch(addThingAction(state))}` -- this stumped me for awhile).
+In a child component which sits below the state/dispatch providing component. And an example of passing `dispatch` is also shown if using a hooks/context version of the [reducks](https://github.com/alexnm/re-ducks) pattern ( in the operations file: `const addThing = ({thing, dispatch})) => { dispatch(addThingAction(state))}` -- this stumped me for awhile).
 
 ```
 import React, { useContext } from 'react';
