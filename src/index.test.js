@@ -1,7 +1,8 @@
+import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import { spy } from 'sinon'
 
-import useCombinedReducers from './'
+import useCombinedReducers from '.'
 
 describe('useCombinedReducer', () => {
   it('returns a combined state object', () => {
