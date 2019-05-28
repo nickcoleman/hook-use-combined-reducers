@@ -7,8 +7,9 @@
   "scripts": {
     "build": "webpack --config ./webpack.config.js --mode=production",
     "prepare": "npm run build",
-    "test": "nyc mocha --require @babel/register 'src/**/**spec.js'",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc mocha --require @babel/register 'src/**/**index.test.js'",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
   },
   "keywords": [],
   "author": "Nick Coleman <nick@nickcoleman.io",
@@ -23,6 +24,7 @@
     "babel-loader": "^8.0.5",
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
+    "eslint-config-ncoleman": "^1.6.4",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "webpack": "^4.31.0",

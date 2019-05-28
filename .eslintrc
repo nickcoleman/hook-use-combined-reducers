@@ -1,0 +1,19 @@
+{
+  "extends": "ncoleman",
+  "rules": {
+    "semi": ["warn", "never"],
+    "max-len": [
+      "warn",
+      120,
+      2,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "import/namespace": "error"
+  }
+}
