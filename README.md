@@ -32,7 +32,7 @@ export default App;
 
 Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html).
 
-An example is shown below -- but, it's same as if you'd used single useReducer to generate state and dispatch.
+An example is shown below -- but, it's same as if you'd used a single useReducer to generate state and dispatch.
 
 You could also pass state and dispatch down via props.
 
@@ -127,7 +127,7 @@ function SomeComponent() {
 export default SomeComponent
 ```
 
-For redux, the operations file method might look like this if you needed to access an external api:
+For reducks, the operations file method might look like this if you needed to access an external api:
 
 ```
 const addThing = async ({thing, dispatch}) => {
