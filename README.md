@@ -28,7 +28,17 @@ const App = () => {
 export default App;
 ```
 
-Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html). (An example is shown below -- but, same as if you'd generated state and dispatch from a single useReducer). You could also pass state and dispatch down via props.
+## Usage Example - Passing state and dispatch
+
+Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html).
+
+An example is shown below -- but, it's same as if you'd used single useReducer to generate state and dispatch.
+
+You could also pass state and dispatch down via props.
+
+---
+
+### 1. Setup Context
 
 In `src/context.js`
 
@@ -47,7 +57,11 @@ import Context from "src/context"
 export const useAppContext = () => useContext(Context)
 ```
 
-In your top-level React component (or any other component above a component tree which needs to access the managed state):
+---
+
+### 2. Setup Parent Component
+
+In your top-level React component ... hhis could be either your entry file (as shown) or the parent component of a component tree you want to pass context on:
 
 ```
 import React, { useReducer } from 'react';
@@ -55,6 +69,8 @@ import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
 import { Context } from 'src/context';
 import SomeComponent from 'src/components/SomeComponent'
+
+import { initialWidgets, initialThings } from 'store/initialState'
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
@@ -72,16 +88,20 @@ const App = () => {
 export default App;
 ```
 
-In a child component which sits below the state/dispatch providing component.
+---
 
-Also, shown is an example of passing `dispatch` if using a hooks/context version of the [reducks](https://github.com/alexnm/re-ducks) pattern. ( In the operations file: `const addThing = ({thing, dispatch}) => { dispatch(addThingAction(state))}` -- how I needed to pass dispatch stumped me for awhile. Hopefully saves you some time if you like that pattern.).
+### 3. Setup Child Component
+
+Example of a child component which will consume the context. This child would sit below the parent provider in the component tree.
+
+I'm a huge fan of the [reducks](https://github.com/alexnm/re-ducks) pattern (and the redux pattern in general). And, adapted it to using hooks. It took me awhile to figure out how to get dispatch to work using that pattern. So, I've also shown an example of passing `dispatch` if you use a hooks/context version of the reducks or another pattern that splits-out non-action creator logic into a seperate file.
 
 ```
 import React, { useContext } from 'react';
 
 import { useAppContext } from 'src/hooks.js';
-import * as actions from 'src/actions'
-import * as operations from 'src/operations' // if using reducks patern with hooks
+import * as actions from 'store/actions'
+import * as operations from 'store/operations' // if using reducks patern with hooks
 
 function SomeComponent() {
   const { state, dispatch } = useAppContext();
@@ -105,6 +125,20 @@ function SomeComponent() {
 };
 
 export default SomeComponent
+```
+
+For redux, the operations file method might look like this if you needed to access an external api:
+
+```
+const addThing = async ({thing, dispatch}) => {
+  dispatch(loadingAction({ loading: true })
+  try {
+    const data = api.fetchUpdatedThings({ thing })  // make call to external endpoint
+    dispatch(addThingAction(data))
+  } catch (error) {
+    dispatch(errorAction(error)
+  }
+}
 ```
 
 ## Contribute
