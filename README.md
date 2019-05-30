@@ -1,6 +1,6 @@
 # useCombinedReducers React Hook
 
-Custom hook to combine all useReducer hooks into a one global state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
+Custom hook to combine multiple useReducer hooks into a one global state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
 
 ## Installation
 
@@ -8,11 +8,13 @@ Custom hook to combine all useReducer hooks into a one global state container wi
 
 ## Usage
 
-Use `useCombinedReducers()` to combine multiple useReducers to create a single `state` object and a global `dispatch` function.
+Use `useCombinedReducers()` to combine multiple useReducers into a single `state` object and a global `dispatch`.
 
 ```
 import React, { useReducer } from 'react';
 import useCombinedReducers from '@nickcoleman/use-combined-reducers';
+
+...
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
@@ -30,11 +32,11 @@ export default App;
 
 ## Usage Example - Passing state and dispatch
 
-Pass `state` and the `dispatch` function down via [React's Context API](https://reactjs.org/docs/context.html).
+Pass `state` and `dispatch` down via [React's Context API](https://reactjs.org/docs/context.html).
 
 An example is shown below -- but, it's same as if you'd used a single useReducer to generate state and dispatch.
 
-You could also pass state and dispatch down via props.
+You can also pass state and dispatch down via props.
 
 ---
 
@@ -71,6 +73,7 @@ import Context from 'src/context';
 import SomeComponent from 'src/components/SomeComponent'
 
 import { initialWidgets, initialThings } from 'store/initialState'
+import { widgetsReducer, thingsReducer } from 'store/reducers'
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
@@ -92,7 +95,7 @@ export default App;
 
 ### 3. Setup Child Component
 
-Example of a child component which will consume the context. This child would sit below the parent provider in the component tree.
+Example of a child component which consumes the context. This child must sit below the parent provider in the component tree.
 
 I'm a huge fan of the [reducks](https://github.com/alexnm/re-ducks) pattern (and the redux pattern in general). And, adapted it to using hooks. It took me awhile to figure out how to get dispatch to work using that pattern. So, I've also shown an example of passing `dispatch` if you use a hooks/context version of the reducks or another pattern that splits-out non-action creator logic into a seperate file.
 
@@ -140,10 +143,3 @@ const addThing = async ({thing, dispatch}) => {
   }
 }
 ```
-
-## Contribute
-
-- `git clone git@github.com:nickcoleman/hook-use-combined-reducers.git`
-- `cd use-combined-reducers`
-- `npm install`
-- `npm run test`
