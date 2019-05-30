@@ -61,13 +61,13 @@ export const useAppContext = () => useContext(Context)
 
 ### 2. Setup Parent Component
 
-In your top-level React component ... hhis could be either your entry file (as shown) or the parent component of a component tree you want to pass context on:
+In your top-level React component ... this could be either your entry file (as shown) or the parent component of a component tree you want to pass context on:
 
 ```
 import React, { useReducer } from 'react';
 import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
-import { Context } from 'src/context';
+import Context from 'src/context';
 import SomeComponent from 'src/components/SomeComponent'
 
 import { initialWidgets, initialThings } from 'store/initialState'
