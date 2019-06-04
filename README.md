@@ -36,11 +36,11 @@ Pass `state` and `dispatch` down via [React's Context API](https://reactjs.org/d
 
 An example is shown below -- but, it's same as if you'd used a single useReducer to generate state and dispatch.
 
-You can also pass state and dispatch down via props.
+As an alternative, you can also pass state and dispatch down via props.
 
 ---
 
-### 1. Setup Context
+### 1. Setup Context Example
 
 In `src/context.js`
 
@@ -97,7 +97,7 @@ export default App;
 
 Example of a child component which consumes the context. This child must sit below the parent provider in the component tree.
 
-I'm a huge fan of the [reducks](https://github.com/alexnm/re-ducks) pattern (and the redux pattern in general). And, adapted it to using hooks. It took me awhile to figure out how to get dispatch to work using that pattern. So, I've also shown an example of passing `dispatch` if you use a hooks/context version of the reducks or another pattern that splits-out non-action creator logic into a seperate file.
+I'm a huge fan of the [reducks](https://github.com/alexnm/re-ducks) pattern (and the redux pattern in general). And, adapted that pattern to using hooks. It took me awhile to figure out how to get dispatch to work using that pattern. So, I've also shown an example of passing `dispatch` if you use a hooks/context version of the reducks pattern or another pattern that splits-out non-action creator logic into a seperate file.
 
 ```
 import React, { useContext } from 'react';
@@ -122,7 +122,7 @@ function SomeComponent() {
 
   return (
     <div>
-      ....
+      ...
     </div>
   );
 };
@@ -136,7 +136,7 @@ For reducks, the operations file method might look like this if you needed to ac
 const addThing = async ({thing, dispatch}) => {
   dispatch(loadingAction({ loading: true })
   try {
-    const data = api.fetchUpdatedThings({ thing })  // make call to external endpoint
+    const data = await api.fetchUpdatedThings({ thing })  // make call to external endpoint
     dispatch(addThingAction(data))
   } catch (error) {
     dispatch(errorAction(error)
