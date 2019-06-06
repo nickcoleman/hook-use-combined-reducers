@@ -1,10 +1,12 @@
 # useCombinedReducers React Hook
 
-Custom hook to combine multiple useReducer hooks into a one global state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
+Custom hook to combine multiple useReducer hooks into a single state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
 
 ## Installation
 
 `npm install @nickcoleman/use-combined-reducers`
+or
+`yarn add @nickcoleman/use-combined-reducers`
 
 ## Usage
 
@@ -18,8 +20,8 @@ import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
-    myWidgets: useReducer(widgetsReducer, initialWidgets),
-    myThings: useReducer(thingsReducer, initialThings),
+    myWidgets: useReducer(widgetsReducer, initialState.widgets),
+    myThings: useReducer(thingsReducer, initialState.things),
   });
 
   const { myWidgets, myOtherWidgets } = state;
@@ -34,13 +36,11 @@ export default App;
 
 Pass `state` and `dispatch` down via [React's Context API](https://reactjs.org/docs/context.html).
 
-An example is shown below -- but, it's same as if you'd used a single useReducer to generate state and dispatch.
-
-As an alternative, you can also pass state and dispatch down via props.
+An example how I use it is shown below -- but, it's same as if you'd used a single useReducer to generate state and dispatch.
 
 ---
 
-### 1. Setup Context Example
+### 1. Setup Context
 
 In `src/context.js`
 
@@ -50,7 +50,8 @@ import { createContext } from "react"
 export default createContext()
 ```
 
-In `src/hooks.js`
+In `src/hooks.js`.
+I find personally find `useAppContext()` easier to use/understand than using a pure Consumer/useContext pattern within my components.
 
 ```
 import { useContext } from "react"
@@ -72,13 +73,12 @@ import useCombinedReducers from '@nickcoleman/use-combined-reducers';
 import Context from 'src/context';
 import SomeComponent from 'src/components/SomeComponent'
 
-import { initialWidgets, initialThings } from 'store/initialState'
-import { widgetsReducer, thingsReducer } from 'store/reducers'
+import { widgetsReducer, thingsReducer, initialState } from 'store/reducers'
 
 const App = () => {
   const [state, dispatch] = useCombinedReducers({
-    myWidgets: useReducer(widgetsReducer, initialWidgets),
-    myThings: useReducer(thingsReducer, initialThings),
+    myWidgets: useReducer(widgetsReducer, initialState.widgets),
+    myThings: useReducer(thingsReducer, initialState.things),
   });
 
   return (
@@ -115,7 +115,7 @@ function SomeComponent() {
     dispatch(action.addWidget(widget))
   }
 
-  // example if using a reducks pattern
+  // example if using a reducks pattern.
   const addThing = thing => {
     operations.addThing({ thing, dispatch })
   }
@@ -136,8 +136,8 @@ For reducks, the operations file method might look like this if you needed to ac
 const addThing = async ({thing, dispatch}) => {
   dispatch(loadingAction({ loading: true })
   try {
-    const data = await api.fetchUpdatedThings({ thing })  // make call to external endpoint
-    dispatch(addThingAction(data))
+    const data = await api.fetchUpdatedThings(thing)  // make call to external endpoint
+    dispatch(addThingAction({data, loading: false}))
   } catch (error) {
     dispatch(errorAction(error)
   }
