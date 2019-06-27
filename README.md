@@ -10,6 +10,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
   </a>
 </p>
+
 # useCombinedReducers React Hook
 
 Custom hook to combine multiple useReducer hooks into a single state container with one dispatch function. Use at top-level. Pass dispatch function and state down via props or [React's Context API](https://reactjs.org/docs/context.html) with Provider and Consumer/useContext.
@@ -63,7 +64,7 @@ export default createContext()
 ```
 
 In `src/hooks.js`.
-I find personally find `useAppContext()` easier to use/understand than using a pure Consumer/useContext pattern within my components.
+I personally find `useAppContext()` easier to use/understand than using a pure Consumer/useContext pattern within my components.
 
 ```
 import { useContext } from "react"
