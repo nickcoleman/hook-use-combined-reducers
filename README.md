@@ -1,5 +1,5 @@
 <p>
-  <img src="https://img.shields.io/badge/version-1.0.25-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-1.0.26-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/nickcoleman/hook-use-combined-reducers#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
