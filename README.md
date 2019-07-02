@@ -159,5 +159,5 @@ const addThing = async ({thing, dispatch}) => {
 
 ## 📝 License
 
-Copyright © 2019 [Nick Coleman &lt;nick@nickcoleman.io](https://github.com/nickcoleman).<br />
+Copyright © 2019 [Nick Coleman &lt;nick@nickcoleman.io](https://github.com/nickcoleman) <br />
 This project is [MIT](https://github.com/nickcoleman/hook-use-combined-reducers/blob/master/LICENSE) licensed.
