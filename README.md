@@ -161,3 +161,5 @@ const addThing = async ({thing, dispatch}) => {
 
 Copyright © 2019 [Nick Coleman &lt;nick@nickcoleman.io](https://github.com/nickcoleman) <br />
 This project is [MIT](https://github.com/nickcoleman/hook-use-combined-reducers/blob/master/LICENSE) licensed.
+
+@babel/cli @babel/core @babel/node @babel/plugin-proposal-object-rest-spread @babel/preset-env @babel/register babel-loader chai coveralls eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react mocha nyc sinon webpack webpack-cli
