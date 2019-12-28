@@ -1,6 +1,6 @@
 {
   "name": "@nickcoleman/use-combined-reducers",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "hook to combine multiple useReducers() -- hook alternative to redux combineReducers()",
   "private": false,
   "main": "lib/index.js",
